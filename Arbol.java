@@ -1,24 +1,26 @@
+
 public class Arbol {
-	int dato;
-	Arbol izq,der;
+	private Integer dato;
+	private Arbol izq;
+	private Arbol der;
 	public Arbol(){
-		this.dato=0;
-		this.izq=null;
-		this.der=null;
+		dato=null;
+		izq=null;
+		der=null;
 	}
 	public boolean isEmpty(){
-		if((this.dato==0) && (this.izq==null) &&(this.der==null)){
+		if((this.dato==null) && (this.izq==null) &&(this.der==null)){
 			return true;
 		}
 		return false;
 	}
-	public void Insert(int dato){
-		if(this.isEmpty()){
+	public void Insert(Integer dato){
+		if(this.dato==null){
 			this.dato=dato;
 			this.izq=new Arbol();
 			this.der= new Arbol();
 		}else{
-			if (dato<this.dato){
+			if (dato.compareTo(this.dato)<0){
 				this.izq.Insert(dato);
 				
 			}else{
@@ -49,16 +51,16 @@ public class Arbol {
 			
 		}
 	}
-	public boolean hasElement(int valor){
+	public boolean hasElement(Integer valor){
 		
 		if (!this.isEmpty()){
 			
-			if (this.dato==valor){
+			if (this.dato.equals(valor)){
 				return true;
 			}else 
-			{if(this.dato<valor)
+			{if(this.dato.compareTo(valor)<0)
 				 return this.der.hasElement(valor);
-			 if(this.dato>valor){
+			 if(this.dato.compareTo(valor)>0){
 				 return this.izq.hasElement(valor);
 				 }
 			 }
